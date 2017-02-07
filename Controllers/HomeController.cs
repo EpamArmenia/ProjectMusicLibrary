@@ -10,7 +10,7 @@ namespace ProjectMusicLibrary.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return Json("Test");
         }
 
         public IActionResult About()

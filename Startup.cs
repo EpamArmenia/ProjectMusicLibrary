@@ -47,6 +47,8 @@ namespace ProjectMusicLibrary
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddCors();
+
             services.AddMvc();
 
             // Add application services.
@@ -76,6 +78,8 @@ namespace ProjectMusicLibrary
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
+            app.UseCors(builder =>
+                                builder.WithOrigins("http://localhost:8000"));
 
             app.UseMvc(routes =>
             {
@@ -83,6 +87,8 @@ namespace ProjectMusicLibrary
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
         }
     }
 }
