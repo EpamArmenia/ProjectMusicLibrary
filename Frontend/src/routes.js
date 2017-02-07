@@ -5,12 +5,14 @@ import HomeComponent from './pages/HomeComponent';
 import About from './pages/About';
 import Layout from './pages/Layout';
 import NotFound from './pages/NotFound'
+import SignIn from './pages/SignIn'
 
 export default (
     <Route path="/" component={Layout}>
         <IndexRoute component={HomeComponent} />
         <Route path="home" component={HomeComponent} />
         <Route path="about" component={About} />
+        <Route path="signin" component={SignIn} />
         <Route path="*" component={NotFound} />
     </Route>
 )
