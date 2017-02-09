@@ -1,8 +1,29 @@
 import React, { Component } from 'react'
 
-import {Form, Col, FormGroup, FormControl, Button, ControlLabel, Checkbox } from 'react-bootstrap'
+import { Form, Col, FormGroup, FormControl, Button, ControlLabel, Checkbox } from 'react-bootstrap'
 
 export default class SignIn extends Component {
+
+    signIn() {
+        var data = document.querySelector('Form');
+
+        fetch('http://localhost:5000/Account/Login', {
+            method: 'POST',
+            body: new FormData(data)
+        })
+            .then(response => {
+                debugger;
+                return response.json()
+            })
+            .then(data => {
+                debugger;
+                console.log(data)
+            })
+            .catch(data => {
+                debugger;
+            });
+    }
+
     render() {
         return (
             <div className='container'>
@@ -13,7 +34,7 @@ export default class SignIn extends Component {
                             Email
                         </Col>
                         <Col sm={4}>
-                            <FormControl type="email" placeholder="Email" />
+                            <input type='text' placeholder='Email' name='Email' className='form-control' />
                         </Col>
                     </FormGroup>
 
@@ -22,19 +43,22 @@ export default class SignIn extends Component {
                             Password
                         </Col>
                         <Col sm={4}>
-                            <FormControl type="password" placeholder="Password" />
+                            <input type='password' placeholder='Password' name='Password' className='form-control' />
                         </Col>
                     </FormGroup>
 
-                    <FormGroup>
+                    <FormGroup className='checkbox'>
                         <Col smOffset={4} sm={4}>
-                            <Checkbox>Remember me</Checkbox>
+                            <label>
+                                <input type="checkbox" name='RememberMe' />
+                                Remember Me
+                            </label>
                         </Col>
                     </FormGroup>
 
-                    <FormGroup>
+                    <FormGroup className='form-group'>
                         <Col smOffset={4} sm={4}>
-                            <Button type="submit">
+                            <Button onClick={this.signIn.bind(this)}>
                                 Sign in
                             </Button>
                         </Col>
