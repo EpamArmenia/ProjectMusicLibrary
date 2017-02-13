@@ -1,34 +1,50 @@
 import React, { Component } from 'react'
-
 import { Form, Col, FormGroup, FormControl, Button, ControlLabel, Checkbox } from 'react-bootstrap'
+import Notifications, {notify} from 'react-notify-toast';
 
-export default class SignIn extends Component {
 
-    signIn() {
+export default class RegisterComponent extends Component {
+
+    constructor(props) {
+        super(props);
+
+        // this.show = notify.createShowQueue();
+    }
+    register() {
         var data = document.querySelector('Form');
+        let myColor = { background: '#0E1717', text: "#FFFFFF" };
 
-        fetch('http://localhost:5000/Account/Login', {
+        fetch('http://localhost:5000/Account/Register', {
             method: 'POST',
             body: new FormData(data)
         })
             .then(response => {
-                debugger;
                 return response.json()
             })
             .then(data => {
-                debugger;
-                console.log(data)
+                if (data.success) {
+                    // Success
+                    data.messages.forEach(function(msg) {
+                        notify.show(msg, 'success');
+                    }, this);
+                    
+                } else {
+                    // Error
+                    data.messages.forEach(function(msg) {
+                        notify.show(msg, 'error');
+                    }, this);
+                }
             })
             .catch(data => {
-                debugger;
+                this.show('Internal Server Error', 'error');
             });
     }
-
-    render() {
+    render () {
         return (
-            <div className='container'>
+            <div className='register'>
+                <Notifications />
                 <Form horizontal>
-                    <h4>Sign In</h4>
+                    <h4>Register</h4>
                     <FormGroup controlId="formHorizontalEmail">
                         <Col componentClass={ControlLabel} smOffset={2} sm={2}>
                             Email
@@ -47,23 +63,22 @@ export default class SignIn extends Component {
                         </Col>
                     </FormGroup>
 
-                    <FormGroup className='checkbox'>
-                        <Col smOffset={4} sm={4}>
-                            <label>
-                                <input type="checkbox" name='RememberMe' />
-                                Remember Me
-                            </label>
+                    <FormGroup controlId="formHorizontalPassword">
+                        <Col componentClass={ControlLabel} smOffset={2} sm={2}>
+                            Confirm Password
+                        </Col>
+                        <Col sm={4}>
+                            <input type='password' placeholder='Password' name='ConfirmPassword' className='form-control' />
                         </Col>
                     </FormGroup>
 
                     <FormGroup className='form-group'>
                         <Col smOffset={4} sm={4}>
-                            <Button onClick={this.signIn.bind(this)}>
-                                Sign in
+                            <Button onClick={this.register.bind(this)}>
+                                Sign up
                             </Button>
                         </Col>
                     </FormGroup>
-                    <p> Don't have an account? <a href='/register'>Sign up. </a></p>
                 </Form>
             </div>
         );

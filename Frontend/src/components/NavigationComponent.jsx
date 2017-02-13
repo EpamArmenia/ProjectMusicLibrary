@@ -32,18 +32,21 @@ export default class TopNavigation extends Component {
                             <MenuItem eventKey={3.3}>Christmas Songs</MenuItem>
                         </NavDropdown>
                     </Nav>
-                    <Navbar.Form pullRight>
-                        <FormGroup>
-                            <FormControl type="text" placeholder="Search" />
-                        </FormGroup>
-                        {' '}
-                        <Button type="submit">Submit</Button>
-                    </Navbar.Form>
                     <Nav pullRight>
                         <LinkContainer to="/signin">
                             <NavItem eventKey={1}>Sign In</NavItem>
                         </LinkContainer>
                     </Nav>
+                    <Navbar.Form >
+                        <FormGroup>
+                            <FormControl type="text" placeholder="Search" />
+                        </FormGroup>
+                        {' '}
+                        <Button type="submit">Submit</Button>
+
+
+
+                    </Navbar.Form>
                 </Navbar.Collapse>
             </Navbar>
         );
