@@ -9,7 +9,6 @@ using Microsoft.Extensions.Logging;
 using ProjectMusicLibrary.Data;
 using ProjectMusicLibrary.Models;
 using ProjectMusicLibrary.Services;
-using MySQL.Data.EntityFrameworkCore.Extensions;
 
 namespace ProjectMusicLibrary
 {
@@ -39,7 +38,7 @@ namespace ProjectMusicLibrary
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                  options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+                  options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()

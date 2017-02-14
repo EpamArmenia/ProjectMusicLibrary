@@ -122,11 +122,13 @@ namespace ProjectMusicLibrary.Controllers
                         serviceResult.Success = true;
                         serviceResult.Messages.Add("User was created");
                     }
-                    AddErrors(result);
-                    serviceResult.Success = false;
-                    serviceResult.Messages.Add("Error while saving a user");
-                    serviceResult.Messages.AddRange(result.Errors.Select(c => c.Description).ToList());
-
+                    else
+                    {
+                        AddErrors(result);
+                        serviceResult.Success = false;
+                        serviceResult.Messages.Add("Error while saving a user");
+                        serviceResult.Messages.AddRange(result.Errors.Select(c => c.Description).ToList());
+                    }
                 }
                 else
                 {

@@ -8,12 +8,13 @@ using ProjectMusicLibrary.Data;
 namespace ProjectMusicLibrary.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170213210109_initialMigration")]
-    partial class initialMigration
+    [Migration("20170214213920_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
