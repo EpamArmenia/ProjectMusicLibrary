@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Music from '../models/MusicItem'
 
 export default class MusicComponent extends Component {
     constructor(props) {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Col, FormGroup, FormControl, Button, ControlLabel, Checkbox } from 'react-bootstrap'
+import { Form, Col, FormGroup, Button, ControlLabel } from 'react-bootstrap'
 import Notifications, {notify} from 'react-notify-toast';
 
 
@@ -12,7 +12,6 @@ export default class RegisterComponent extends Component {
     }
     register() {
         var data = document.querySelector('Form');
-        let myColor = { background: '#0E1717', text: "#FFFFFF" };
 
         fetch('http://localhost:5000/Account/Register', {
             method: 'POST',
