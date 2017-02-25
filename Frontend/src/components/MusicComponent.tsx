@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
-import Music from '../models/MusicItem'
+import * as React from 'react';
+import { Component } from 'react';
+import { MusicItem } from '../models/MusicItem';
 
-export default class MusicComponent extends Component {
-    constructor(props) {
+export default class MusicComponent extends Component<any, any> {
+    constructor(props: any) {
         super(props);
 
         this.CurrentMusic = this.props.Music;
     }
 
-    CurrentMusic: Music;
+    CurrentMusic: MusicItem;
 
     render() {
         return (

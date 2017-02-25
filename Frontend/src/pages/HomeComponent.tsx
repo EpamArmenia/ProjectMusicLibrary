@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import { Button, Col, Row } from 'react-bootstrap'
 import Music from '../components/MusicComponent'
 import { LinkContainer } from 'react-router-bootstrap'
 import { MusicItem } from '../models/MusicItem'
 
-export default class HomeComponent extends Component {
-    constructor(props) {
+export default class HomeComponent extends React.Component<any, any> {
+    constructor(props: any) {
         super(props);
 
         this.state = {

@@ -36,4 +36,7 @@ config.module.loaders.push({
   )
 });
 
+config.module.loaders.push({ test: /\.tsx?$/, loader: "awesome-typescript-loader" });
+config.module.preLoaders.push({ test: /\.js$/, loader: "source-map-loader" });
+
 module.exports = config;
